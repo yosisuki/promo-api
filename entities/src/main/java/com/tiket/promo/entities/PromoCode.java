@@ -14,11 +14,11 @@ public class PromoCode {
     @Field("code")
     private String code;
 
-    @Field("max_qty")
-    private int max;
-
     @Field("qty")
     private int qty;
+
+    @Field("used")
+    private int used;
 
     @Field("discount_type")
     private String discountType;
@@ -66,20 +66,20 @@ public class PromoCode {
         this.code = code;
     }
 
-    public int getMax() {
-        return max;
-    }
-
-    public void setMax(int max) {
-        this.max = max;
-    }
-
     public int getQty() {
         return qty;
     }
 
     public void setQty(int qty) {
         this.qty = qty;
+    }
+
+    public int getUsed() {
+        return used;
+    }
+
+    public void setUsed(int used) {
+        this.used = used;
     }
 
     public String getDiscountType() {

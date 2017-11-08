@@ -26,7 +26,7 @@ public class PromoCodeService {
 
     public boolean insert(
             String code,
-            int max,
+            int qty,
             Float discount,
             Float discountPercent,
             Float maxDiscount,
@@ -37,8 +37,8 @@ public class PromoCodeService {
         }
         PromoCode promoCode = new PromoCode();
         promoCode.setCode(code);
-        promoCode.setQty(0);
-        promoCode.setMax(max);
+        promoCode.setQty(qty);
+        promoCode.setUsed(0);
         promoCode.setCreatedBy(1);
         promoCode.setCreatedDate(new Date());
         promoCode.setDiscount(discount);
@@ -68,7 +68,7 @@ public class PromoCodeService {
 
     public boolean update(
             String code,
-            int max,
+            int qty,
             Float discount,
             Float discountPercent,
             Float maxDiscount,
@@ -78,8 +78,7 @@ public class PromoCodeService {
         List<PromoCode> promoCodes = this.promoCodeRepository.findByCode(code);
         PromoCode promoCode = promoCodes.get(0);
         promoCode.setCode(code);
-        promoCode.setQty(0);
-        promoCode.setMax(max);
+        promoCode.setQty(qty);
         promoCode.setCreatedBy(1);
         promoCode.setCreatedDate(new Date());
         promoCode.setDiscount(discount);

@@ -32,28 +32,28 @@ public class PromoCodeController {
     @PostMapping(path="/create")
     public @ResponseBody String postCreate(
             @RequestParam(value="code", required = true) String code,
-            @RequestParam(value="max", required = true) int max,
+            @RequestParam(value="qty", required = true) int qty,
             @RequestParam(value="discount", required = true) Float discount,
             @RequestParam(value="discount_percent", required = true) Float discountPercent,
             @RequestParam(value="max_discount", required = true) Float maxDiscount,
             @RequestParam(value="start_date", required = true) String startDate,
             @RequestParam(value="end_date", required = true) String endDate
     ) {
-        this.promoCodeService.insert(code, max, discount, discountPercent, maxDiscount, startDate, endDate);
+        this.promoCodeService.insert(code, qty, discount, discountPercent, maxDiscount, startDate, endDate);
         return "Inserted Succesfully";
     }
 
     @PatchMapping(path="/update")
     public @ResponseBody String patchUpdate(
             @RequestParam(value="code", required = true) String code,
-            @RequestParam(value="max", required = true) int max,
+            @RequestParam(value="qty", required = true) int qty,
             @RequestParam(value="discount", required = true) Float discount,
             @RequestParam(value="discount_percent", required = true) Float discountPercent,
             @RequestParam(value="max_discount", required = true) Float maxDiscount,
             @RequestParam(value="start_date", required = true) String startDate,
             @RequestParam(value="end_date", required = true) String endDate
     ) {
-        this.promoCodeService.update(code, max, discount, discountPercent, maxDiscount, startDate, endDate);
+        this.promoCodeService.update(code, qty, discount, discountPercent, maxDiscount, startDate, endDate);
         return "Updated Successfully";
     }
 }

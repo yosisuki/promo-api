@@ -5,16 +5,16 @@ import com.tiket.promo.repositories.PromoCodeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class PromoCodeService {
-    private PromoCodeRepository promoCodeRepository;
-
     @Autowired
-    public PromoCodeService(PromoCodeRepository promoCodeRepository){
-        this.promoCodeRepository = promoCodeRepository;
-    }
+    private PromoCodeRepository promoCodeRepository;
 
     public List<PromoCode> all(){
         return this.promoCodeRepository.findAll();
@@ -24,22 +24,85 @@ public class PromoCodeService {
         return this.promoCodeRepository.findByCode(code);
     }
 
-    public boolean insert(String code, int qty) {
+    public boolean insert(
+            String code,
+            int max,
+            Float discount,
+            Float discountPercent,
+            Float maxDiscount,
+            String startDate,
+            String endDate) {
         if(this.isDuplicate(code)){
             return false;
         }
         PromoCode promoCode = new PromoCode();
         promoCode.setCode(code);
-        promoCode.setQty(qty);
+        promoCode.setQty(0);
+        promoCode.setMax(max);
+        promoCode.setCreatedBy(1);
+        promoCode.setCreatedDate(new Date());
+        promoCode.setDiscount(discount);
+        promoCode.setDiscountPercent(discountPercent);
+        promoCode.setMaxDiscount(maxDiscount);
+        promoCode.setDiscountType("value");
+
+        Date stDate = new Date();
+        Date edDate = new Date();
+        DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+        try {
+            stDate = df.parse(startDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            edDate = df.parse(endDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        promoCode.setStartDate(stDate);
+        promoCode.setEndDate(edDate);
         this.promoCodeRepository.insert(promoCode);
         return true;
     }
 
-    public boolean update(String code, int qty) {
+    public boolean update(
+            String code,
+            int max,
+            Float discount,
+            Float discountPercent,
+            Float maxDiscount,
+            String startDate,
+            String endDate
+    ) {
         List<PromoCode> promoCodes = this.promoCodeRepository.findByCode(code);
         PromoCode promoCode = promoCodes.get(0);
         promoCode.setCode(code);
-        promoCode.setQty(qty);
+        promoCode.setQty(0);
+        promoCode.setMax(max);
+        promoCode.setCreatedBy(1);
+        promoCode.setCreatedDate(new Date());
+        promoCode.setDiscount(discount);
+        promoCode.setDiscountPercent(discountPercent);
+        promoCode.setMaxDiscount(maxDiscount);
+        promoCode.setDiscountType("value");
+
+        Date stDate = new Date();
+        Date edDate = new Date();
+        DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+        try {
+            stDate = df.parse(startDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            edDate = df.parse(endDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        promoCode.setStartDate(stDate);
+        promoCode.setEndDate(edDate);
         this.promoCodeRepository.save(promoCode);
         return true;
     }

@@ -67,6 +67,11 @@
 			<artifactId>entities</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.tiket.promo</groupId>
+			<artifactId>controllers</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>

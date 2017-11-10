@@ -3,18 +3,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.tiket</groupId>
-	<artifactId>promo</artifactId>
+	<groupId>com.tiket.promo</groupId>
+	<artifactId>asyncservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 
-	<name>promo</name>
-	<description>Promo API</description>
+	<name>asyncservice</name>
+	<description>Async Service for Promo API</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.0.M5</version>
+		<version>2.0.0.M6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -27,19 +27,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-redis</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-rest</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 
 		<dependency>
@@ -48,34 +36,21 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.restdocs</groupId>
-			<artifactId>spring-restdocs-mockmvc</artifactId>
-			<scope>test</scope>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.tiket</groupId>
-			<artifactId>promo</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>io.reactivex</groupId>
+			<artifactId>rxjava</artifactId>
+			<version>1.3.3</version>
 		</dependency>
 		<dependency>
-			<groupId>com.tiket.promo</groupId>
-			<artifactId>apiservice</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>io.lettuce</groupId>
+			<artifactId>lettuce-core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.tiket.promo</groupId>
-			<artifactId>entities</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.tiket.promo</groupId>
-			<artifactId>controllers</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.tiket.promo</groupId>
-			<artifactId>asyncservice</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>io.reactivex</groupId>
+			<artifactId>rxjava</artifactId>
 		</dependency>
 	</dependencies>
 

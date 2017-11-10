@@ -108,7 +108,7 @@ public class PromoCodeService {
 
     private boolean isDuplicate(String code){
         List<PromoCode> promoCodes = this.promoCodeRepository.findByCode(code);
-        if(!promoCodes.isEmpty()){
+        if(promoCodes.isEmpty()){
             return false;
         }
         return true;

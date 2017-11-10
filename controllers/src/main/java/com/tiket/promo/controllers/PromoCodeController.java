@@ -39,8 +39,11 @@ public class PromoCodeController {
             @RequestParam(value="start_date", required = true) String startDate,
             @RequestParam(value="end_date", required = true) String endDate
     ) {
-        this.promoCodeService.insert(code, qty, discount, discountPercent, maxDiscount, startDate, endDate);
-        return "Inserted Succesfully";
+        if(this.promoCodeService.insert(code, qty, discount, discountPercent, maxDiscount, startDate, endDate)){
+            return "Inserted Succesfully";
+        }
+        return "There's problem when inserting";
+
     }
 
     @PatchMapping(path="/update")

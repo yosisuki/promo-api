@@ -33,9 +33,9 @@ public class PromoCodeController {
     public @ResponseBody String postCreate(
             @RequestParam(value="code", required = true) String code,
             @RequestParam(value="qty", required = true) int qty,
-            @RequestParam(value="discount", required = true) Float discount,
-            @RequestParam(value="discount_percent", required = true) Float discountPercent,
-            @RequestParam(value="max_discount", required = true) Float maxDiscount,
+            @RequestParam(value="discount", required = true) Double discount,
+            @RequestParam(value="discount_percent", required = true) Double discountPercent,
+            @RequestParam(value="max_discount", required = true) Double maxDiscount,
             @RequestParam(value="start_date", required = true) String startDate,
             @RequestParam(value="end_date", required = true) String endDate
     ) {
@@ -50,9 +50,9 @@ public class PromoCodeController {
     public @ResponseBody String patchUpdate(
             @RequestParam(value="code", required = true) String code,
             @RequestParam(value="qty", required = true) int qty,
-            @RequestParam(value="discount", required = true) Float discount,
-            @RequestParam(value="discount_percent", required = true) Float discountPercent,
-            @RequestParam(value="max_discount", required = true) Float maxDiscount,
+            @RequestParam(value="discount", required = true) Double discount,
+            @RequestParam(value="discount_percent", required = true) Double discountPercent,
+            @RequestParam(value="max_discount", required = true) Double maxDiscount,
             @RequestParam(value="start_date", required = true) String startDate,
             @RequestParam(value="end_date", required = true) String endDate
     ) {

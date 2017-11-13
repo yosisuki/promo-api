@@ -14,28 +14,40 @@ public class PromoCode {
     @Field("code")
     private String code;
 
+    @Field("description")
+    private String description;
+
     @Field("qty")
+    // Number of Promo Codes available
     private int qty;
 
     @Field("used")
+    // Number of Promo Codes usage
     private int used;
 
     @Field("discount_type")
+    // Discount Type will determine if this promo code only gives discount or any other discount method such as "Buy 1 get 1"
     private String discountType;
 
     @Field("max_discount")
-    private Float maxDiscount;
+    // Maximum amount of discount can be obtained by using this promo code, mostly affect the percentage discount
+    private Double maxDiscount;
 
-    @Field("discount")
-    private Float discount;
+    @Field("min_transaction")
+    // Minimum amount of transaction which will be able to use the promo code
+    private Double minTransaction;
 
-    @Field("discount_percent")
-    private Float discountPercent;
+    @Field("limit_type")
+    // The limitation of promo code usage
+    // value will be "unlimited", "once_per_day", "one_time", "first_transaction"
+    private String limit_type;
 
     @Field("start_date")
+    // When will the promo_code can be used
     private Date startDate;
 
     @Field("end_date")
+    // When will this promo_code validity will expired
     private Date endDate;
 
     @Field("created_date")
@@ -49,6 +61,12 @@ public class PromoCode {
 
     @Field("updated_by")
     private int updatedBy;
+
+    @Field("deleted_date")
+    private Date deletedDate;
+
+    @Field("deleted_by")
+    private int deletedBy;
 
     public String get_id() {
         return _id;
@@ -64,6 +82,14 @@ public class PromoCode {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getQty() {
@@ -90,28 +116,28 @@ public class PromoCode {
         this.discountType = discountType;
     }
 
-    public Float getMaxDiscount() {
+    public Double getMaxDiscount() {
         return maxDiscount;
     }
 
-    public void setMaxDiscount(Float maxDiscount) {
+    public void setMaxDiscount(Double maxDiscount) {
         this.maxDiscount = maxDiscount;
     }
 
-    public Float getDiscount() {
-        return discount;
+    public Double getMinTransaction() {
+        return minTransaction;
     }
 
-    public void setDiscount(Float discount) {
-        this.discount = discount;
+    public void setMinTransaction(Double minTransaction) {
+        this.minTransaction = minTransaction;
     }
 
-    public Float getDiscountPercent() {
-        return discountPercent;
+    public String getLimit_type() {
+        return limit_type;
     }
 
-    public void setDiscountPercent(Float discountPercent) {
-        this.discountPercent = discountPercent;
+    public void setLimit_type(String limit_type) {
+        this.limit_type = limit_type;
     }
 
     public Date getStartDate() {
@@ -160,5 +186,21 @@ public class PromoCode {
 
     public void setUpdatedBy(int updatedBy) {
         this.updatedBy = updatedBy;
+    }
+
+    public Date getDeletedDate() {
+        return deletedDate;
+    }
+
+    public void setDeletedDate(Date deletedDate) {
+        this.deletedDate = deletedDate;
+    }
+
+    public int getDeletedBy() {
+        return deletedBy;
+    }
+
+    public void setDeletedBy(int deletedBy) {
+        this.deletedBy = deletedBy;
     }
 }

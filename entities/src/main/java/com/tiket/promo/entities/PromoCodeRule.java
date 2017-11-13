@@ -18,6 +18,10 @@ public class PromoCodeRule {
     @Field("code")
     private String code;
 
+    @Field("productType")
+    //The values will be "flight", "hotel", "train", or any other product type
+    private String productType;
+
     @Field("param_name")
     private String paramName;
 

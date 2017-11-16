@@ -19,18 +19,18 @@ public class PromoCodeController {
     }
 
     @GetMapping(path="")
-    public @ResponseBody List<PromoCode> getAll() {
+    public @ResponseBody List<PromoCode> index() {
         return this.promoCodeService.all();
     }
 
-    @GetMapping(path="/find")
+    @GetMapping(path="/{code}")
     public @ResponseBody
-    List<PromoCode> getFindPromoCode(@RequestParam(value="code", required = true) String code) {
+    List<PromoCode> get(@PathVariable(value="code") String code) {
         return this.promoCodeService.find(code);
     }
 
-    @PostMapping(path="/create")
-    public @ResponseBody String postCreate(
+    @PostMapping(path="")
+    public @ResponseBody String create(
             @RequestParam(value="code", required = true) String code,
             @RequestParam(value="qty", required = true) int qty,
             @RequestParam(value="discount", required = true) Double discount,
@@ -43,12 +43,11 @@ public class PromoCodeController {
             return "Inserted Succesfully";
         }
         return "There's problem when inserting";
-
     }
 
-    @PatchMapping(path="/update")
-    public @ResponseBody String patchUpdate(
-            @RequestParam(value="code", required = true) String code,
+    @PatchMapping(path="/{code}")
+    public @ResponseBody String update(
+            @PathVariable(value="code") String code,
             @RequestParam(value="qty", required = true) int qty,
             @RequestParam(value="discount", required = true) Double discount,
             @RequestParam(value="discount_percent", required = true) Double discountPercent,
@@ -58,5 +57,13 @@ public class PromoCodeController {
     ) {
         this.promoCodeService.update(code, qty, discount, discountPercent, maxDiscount, startDate, endDate);
         return "Updated Successfully";
+    }
+
+    @DeleteMapping(path="/{code}")
+    public @ResponseBody String destroy(
+            @PathVariable(value="code") String code
+    ) {
+        this.promoCodeService.softDelete(code);
+        return "Deleted Successfully";
     }
 }

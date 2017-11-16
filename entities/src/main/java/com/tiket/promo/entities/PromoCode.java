@@ -25,6 +25,12 @@ public class PromoCode {
     // Number of Promo Codes usage
     private int used;
 
+    @Field("allowed_product")
+    private String allowedProduct;
+
+    @Field("booking_platform")
+    private String bookingPlatform;
+
     @Field("discount_type")
     // Discount Type will determine if this promo code only gives discount or any other discount method such as "Buy 1 get 1"
     private String discountType;
@@ -106,6 +112,22 @@ public class PromoCode {
 
     public void setUsed(int used) {
         this.used = used;
+    }
+
+    public String getAllowedProduct() {
+        return allowedProduct;
+    }
+
+    public void setAllowedProduct(String allowedProduct) {
+        this.allowedProduct = allowedProduct;
+    }
+
+    public String getBookingPlatform() {
+        return bookingPlatform;
+    }
+
+    public void setBookingPlatform(String bookingPlatform) {
+        this.bookingPlatform = bookingPlatform;
     }
 
     public String getDiscountType() {

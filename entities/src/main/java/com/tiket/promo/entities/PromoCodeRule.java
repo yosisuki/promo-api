@@ -18,7 +18,7 @@ public class PromoCodeRule {
     @Field("code")
     private String code;
 
-    @Field("productType")
+    @Field("product_type")
     //The values will be "flight", "hotel", "train", or any other product type
     private String productType;
 

@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public interface PromoCodeDiscountRangeRepository extends MongoRepository<PromoCodeDiscountRange, Long> {
     List<PromoCodeDiscountRange> findAll();
+    List<PromoCodeDiscountRange> findByCode(String code);
     PromoCodeDiscountRange insert(PromoCodeDiscountRange promoCodeDiscountRange);
     PromoCodeDiscountRange save(PromoCodeDiscountRange promoCodeDiscountRange);
 }

@@ -22,7 +22,7 @@ public class PromoCodeService {
     private PromoCodeDiscountRangeRepository promoCodeDiscountRangeRepository;
 
     public List<PromoCode> all(){
-        return this.promoCodeRepository.findAll();
+        return this.promoCodeRepository.findByDeletedByNot(1);
     }
 
     public List<PromoCode> find(String code){
@@ -127,6 +127,18 @@ public class PromoCodeService {
         promoCodeDiscountRange.setCreatedBy(1);
         promoCodeDiscountRange.setCreatedDate(new Date());
         this.promoCodeDiscountRangeRepository.insert(promoCodeDiscountRange);
+
+        return true;
+    }
+
+    public boolean softDelete(
+            String code
+    ) {
+        List<PromoCode> promoCodes = this.promoCodeRepository.findByCode(code);
+        PromoCode promoCode = promoCodes.get(0);
+        promoCode.setDeletedBy(1);
+        promoCode.setDeletedDate(new Date());
+        this.promoCodeRepository.save(promoCode);
 
         return true;
     }

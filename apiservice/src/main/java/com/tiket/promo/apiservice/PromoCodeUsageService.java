@@ -16,41 +16,13 @@ import java.util.List;
 @Service
 public class PromoCodeUsageService {
     @Autowired
-    private PromoCodeRepository promoCodeRepository;
-
-    @Autowired
     private PromoCodeUsageRepository promoCodeUsageRepository;
 
-
-
-    public boolean usePromoCode(String code){
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        Date startDate = new Date();
-        Date endDate = new Date();
-
-        try {
-            startDate = df.parse("01/01/2017");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            endDate = df.parse("01/02/2017");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        List<PromoCode> promoCodes = this.promoCodeRepository.findByCodeAndStartDateAndEndDate(code, startDate, endDate);
-        PromoCode promoCode = promoCodes.get(0);
-        promoCode.setQty(promoCode.getQty() - 1);
-        this.promoCodeRepository.save(promoCode);
-
+    public void createPromoCodeUsage(String code){
         PromoCodeUsage promoCodeUsage = new PromoCodeUsage();
         promoCodeUsage.setCode(code);
         promoCodeUsage.setCreatedDate(new Date());
         promoCodeUsage.setTransactionId(1);
         this.promoCodeUsageRepository.insert(promoCodeUsage);
-
-        return true;
     }
 }

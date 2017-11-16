@@ -18,6 +18,9 @@ public class PromoCodeUsage {
     @Field("code")
     private String code;
 
+    @Field("discount_amount")
+    private Double discountAmount;
+
     @Field("created_date")
     private Date createdDate;
 
@@ -38,6 +41,14 @@ public class PromoCodeUsage {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public Double getDiscountAmount() {
+        return discountAmount;
+    }
+
+    public void setDiscountAmount(Double discountAmount) {
+        this.discountAmount = discountAmount;
     }
 
     public Date getCreatedDate() {

@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface PromoCodeRepository extends MongoRepository<PromoCode, Long> {
-    List<PromoCode> findAll();
+    List<PromoCode> findByDeletedByNot(int createdBy);
     PromoCode insert(PromoCode promoCode);
     PromoCode save(PromoCode promoCode);
     List<PromoCode> findByCode(String code);
